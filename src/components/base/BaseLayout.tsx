@@ -4,7 +4,7 @@ import Sidebar from './Sidebar'
 import { cn } from '@/lib/utils'
 import SurahListVertical from '../homepage/SurahListVertical'
 
-const Baselayout = ({ children, className, renderSurahLists = false }: { children: ReactNode, className?: string, renderSurahLists: boolean }) => {
+const Baselayout = ({ children, className, renderSurahLists = false }: { children: ReactNode, className?: string, renderSurahLists?: boolean }) => {
     return (
         <div>
             <div className='absolute top-0 left-0 w-full z-50'>
