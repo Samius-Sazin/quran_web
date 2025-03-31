@@ -20,7 +20,7 @@ const QuickLinks = () => {
             surahNo: "46",
         },
     ]
-
+    //todo: fetch from db
     return (
         <div className='flex flex-col gap-2'>
             <p className="text-xs">Last Read</p>

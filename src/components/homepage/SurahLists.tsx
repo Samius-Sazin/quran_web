@@ -26,6 +26,7 @@ const SurahLists = () => {
         queryFn: async () => await getAllSurahListAction(),
     })
 
+    // todo: tab optimization needed
     const updatedSurahLists =
         selectedTab === "Ayah"
             ? [...(surahLists || [])].sort((a, b) => b.totalAyah - a.totalAyah)

@@ -19,6 +19,7 @@ const ShowAyah = ({ ayahNumber, arabicText, translationEnglish, translationBangl
         <p className="text-base mt-1">{translationBangla}</p>
       </div>
 
+      {/* todo: icons interactions */}
       {/* Icons */}
       <div className="flex items-center gap-4 mt-4 text-gray-600">
         <Play className="cursor-pointer hover:text-black" size={20} />

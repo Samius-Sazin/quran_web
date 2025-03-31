@@ -16,7 +16,7 @@ const LastRead = () => {
             surahNo: "5",
         },
     ]
-
+    // todo: fetcch from DB
     return (
         <div className='flex flex-col gap-2'>
             <p className="text-xs">Last Read</p>
