@@ -3,19 +3,19 @@ import { Play, Bookmark, BookOpen } from "lucide-react";
 
 const ShowAyah = ({ ayahNumber, arabicText, translationEnglish, translationBangla }: { ayahNumber: string, arabicText: string, translationEnglish: string, translationBangla: string }) => {
   return (
-    <div className="border-b border-gray-300 pb-4">
+    <div className="border-gray-300 pb-4">
       {/* Ayah Number */}
-      <div className="text-gray-500 text-lg font-semibold mb-2">{ayahNumber}</div>
+      <div className="text-gray-500 sm:text-lg text-base font-semibold mb-2">{ayahNumber}</div>
 
       {/* Arabic Text */}
-      <div className="text-right text-2xl font-arabic leading-relaxed">
+      <div className="text-right md:text-2xl text-lg font-arabic leading-relaxed">
         {arabicText}
       </div>
 
       {/* Translation */}
       <div className="text-gray-700 mt-2">
         <span className="text-xs opacity-50">Sahih International</span>
-        <p className="text-lg mt-1">{translationEnglish}</p>
+        <p className="sm:text-lg text-base mt-1">{translationEnglish}</p>
         <p className="text-base mt-1">{translationBangla}</p>
       </div>
 

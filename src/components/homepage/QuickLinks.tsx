@@ -22,9 +22,9 @@ const QuickLinks = () => {
     ]
     //todo: fetch from db
     return (
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-2 px-2 md:px-0'>
             <p className="text-xs">Last Read</p>
-            <div className='flex items-center gap-4'>
+            <div className='flex flex-wrap items-center gap-4'>
                 {
                     quickLinks.map((link, index) => (
                         <Link

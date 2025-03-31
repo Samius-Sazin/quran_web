@@ -33,7 +33,7 @@ const SurahLists = () => {
             : surahLists;
 
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-start px-2 md:px-4 px-0'>
             <div>
                 <Tabs defaultValue="surah" onValueChange={setSelectedTab} className="w-[400px] my-8">
                     <TabsList>

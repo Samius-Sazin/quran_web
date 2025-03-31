@@ -10,7 +10,7 @@ const items = [
     {
         id: 1,
         name: "Al Quran",
-        link: process.env.BASE_URL,
+        link: "/",
         icon: "/logo.png",
     },
     {
@@ -54,7 +54,11 @@ const Navbar = () => {
                         {
                             items.map((item) => (
                                 <DropdownMenuItem key={item.id} >
-                                    <Link href={item.link!} target={item.name === "Al Quran" ? "_parent" : "_blank"} className='flex items-center gap-2'>
+                                    <Link
+                                        href={item.link}
+                                        target={item.name === "Al Quran" ? "_self" : "_blank"}
+                                        className="flex items-center gap-2"
+                                    >
                                         <Image
                                             src={item.icon}
                                             alt={item.name}

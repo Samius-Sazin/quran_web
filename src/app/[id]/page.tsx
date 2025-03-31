@@ -60,12 +60,12 @@ const page = () => {
                 }
                 {
                     !isLoading && (
-                        <div className="w-[80%] mx-auto p-6 flex flex-col gap-8">
+                        <div className="md:w-[80%] w-[100%] mx-auto p-6 flex flex-col gap-8">
                             {/* Surah Info */}
                             <div className='flex justify-center'>
-                                <div className="w-[70%] bg-gray-100 p-4 rounded-lg shadow-md text-center flex justify-between items-end">
+                                <div className="md:w-[70%] w-[90%] bg-gray-100 p-4 rounded-lg shadow-md text-center flex justify-between items-end">
                                     <div className='flex flex-col items-start'>
-                                        <h1 className="text-2xl font-bold">{surah?.surahNameTranslation}</h1>
+                                        <h1 className="md:text-2xl text-lg font-bold">{surah?.surahNameTranslation}</h1>
                                         <p className="text-gray-600">{surah?.revelationPlace} - {surah?.totalAyah} Ayahs</p>
                                     </div>
 
@@ -80,7 +80,7 @@ const page = () => {
                                     Array.from({ length: surah?.totalAyah ?? 0 }).map((_, index) => (
                                         <div key={index}>
                                             <ShowAyah ayahNumber={(index + 1).toString()} arabicText={surah?.arabic1[index] || ''} translationEnglish={surah?.english[index] || ''} translationBangla={surah?.bengali[index] || ''} />
-                                            <Separator />
+                                            <Separator className='my-1' />
                                         </div>
                                     ))
                                 }

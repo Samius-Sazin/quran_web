@@ -25,7 +25,7 @@ const SurahListVertical = () => {
     })
 
     return (
-        <div className='flex absolute'>
+        <div className='sm:flex hidden absolute'>
             {
                 isLoading && (
                     <SurahListVerticalSkeleton />

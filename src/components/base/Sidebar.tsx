@@ -43,14 +43,19 @@ const Sidebar = () => {
 
     return (
         <div>
-            <div className="fixed w-[80px] top-[66px] left-0 h-screen bg-white shadow-lg px-1">
-                <div className="flex flex-col gap-8">
+            <div className="
+            fixed 
+            bg-[#539055]/[0.6] backdrop-blur-[10px] py-2 px-4 rounded-md  bottom-6 left-1/2 -translate-x-1/2 flex justify-center items-center
+            md:w-[80px] md:top-[0px] md:bottom-0 md:left-0 md:h-screen md:bg-white shadow-lg md:px-1 md:flex-none md:justify-normal md:-translate-x-0 md:rounded-none
+            "
+            >
+                <div className="flex md:flex-col md:gap-8 sm:gap-4 gap-2">
                     {
                         items.map((item) => (
                             <Link
                                 href={item.link}
                                 key={item.id}
-                                className="first:mt-10 py-2 flex flex-col items-center hover:bg-gray-200 rounded-md cursor-pointer"
+                                className="md:first:mt-10 md:py-2 p-2 flex flex-col items-center md:hover:bg-gray-200 md:active:bg-[#539055] hover:bg-[#539055ed] active:bg-[#5390556d] rounded-md cursor-pointer transition-colors duration-300"
                                 onClick={() => {
                                     if (item.link === "#") {
                                         toast("Coming soon!", {

@@ -25,7 +25,7 @@ const SurahSkeleton = () => {
                             <Skeleton className="h-5 w-3/4" /> {/* English Translation */}
                             <Skeleton className="h-5 w-3/4" /> {/* Bangla Translation */}
                         </div>
-                        <Skeleton className="h-[1px] w-full bg-gray-300" /> {/* Separator */}
+                        <Skeleton className="h-[1px] my-1 w-full bg-gray-300" /> {/* Separator */}
                     </div>
                 ))}
             </div>

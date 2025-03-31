@@ -7,22 +7,22 @@ import SurahListVertical from '../homepage/SurahListVertical'
 const Baselayout = ({ children, className, renderSurahLists = false }: { children: ReactNode, className?: string, renderSurahLists?: boolean }) => {
     return (
         <div>
-            <div className='absolute top-0 left-0 w-full z-50'>
+            <div className='absolute z-50'>
                 <Navbar />
             </div>
 
-            <div className='absolute top-[66px] left-0 z-40'>
+            <div className='absolute z-40'>
                 <Sidebar />
             </div>
 
-            <div className={cn(`mt-[66px] ml-[80px] px-0`, className)}>
+            <div className={cn(`mt-[66px] md:ml-[80px]`, className)}>
                 {
                     renderSurahLists
                     &&
                     <SurahListVertical />
                 }
 
-                <div className={`${renderSurahLists && 'ml-[180px]'}`}>
+                <div className={`${renderSurahLists && 'sm:ml-[180px]'}`}>
                     {children}
                 </div>
             </div>
