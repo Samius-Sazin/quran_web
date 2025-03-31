@@ -1,11 +1,13 @@
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 
 import { getAllSurahListAction } from '@/actions/HomepageActions'
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import SurahList from './SurahList'
+import SurahListsSkeleton from '../skeletons/SurahListsSkeleton'
+import { X } from 'lucide-react'
 
 type surahType = {
     surahName: string;
@@ -17,32 +19,48 @@ type surahType = {
 }
 
 const SurahLists = () => {
+    const [selectedTab, setSelectedTab] = useState("surah")
+
     const { data: surahLists, isLoading } = useQuery({
         queryKey: ['surahLists'],
         queryFn: async () => await getAllSurahListAction(),
     })
 
+    const updatedSurahLists =
+        selectedTab === "Ayah"
+            ? [...(surahLists || [])].sort((a, b) => b.totalAyah - a.totalAyah)
+            : surahLists;
+
     return (
         <div className='flex flex-col items-center'>
             <div>
-                <Tabs defaultValue="surah" className="w-[400px] my-8">
+                <Tabs defaultValue="surah" onValueChange={setSelectedTab} className="w-[400px] my-8">
                     <TabsList>
-                        <TabsTrigger value="surah">Surah</TabsTrigger>
-                        <TabsTrigger value="page">Page</TabsTrigger>
-                        <TabsTrigger value="Juz">Juz</TabsTrigger>
-                        <TabsTrigger value="hizb">Hizb</TabsTrigger>
-                        <TabsTrigger value="ruku">Ruku</TabsTrigger>
+                        <TabsTrigger value="surah" className='cursor-pointer'>Surah</TabsTrigger>
+                        <TabsTrigger value="Ayah" className='cursor-pointer'>Ayah</TabsTrigger>
+                        {/* <TabsTrigger value="Juz" className='cursor-pointer'>Juz</TabsTrigger>
+                        <TabsTrigger value="hizb" className='cursor-pointer'>Hizb</TabsTrigger>
+                        <TabsTrigger value="ruku" className='cursor-pointer'>Ruku</TabsTrigger> */}
                     </TabsList>
-                    {/* <TabsContent value="account">Make changes to your account here.</TabsContent>
-                <TabsContent value="password">Change your password here.</TabsContent> */}
                 </Tabs>
             </div>
 
 
             {
                 isLoading && (
-                    //todo: show a skeleton here
-                    <p>Loading...</p>
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 w-full'>
+                        {
+                            [...Array(9)].map((_, index) => (
+                                <SurahListsSkeleton key={index} />
+                            ))
+                        }
+                    </div>
+                )
+            }
+
+            {
+                !isLoading && !surahLists && (
+                    <p className='flex items-center my-5'><X className='text-red-500' /> No surah found</p>
                 )
             }
 
@@ -51,8 +69,8 @@ const SurahLists = () => {
                 (
                     <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 w-full'>
                         {
-                            surahLists?.map((surah: surahType, i: number) => (
-                                <SurahList key={surah?.surahName} surah={surah} index={i} />
+                            updatedSurahLists?.map((surah: surahType, i: number) => (
+                                <SurahList key={surah?.surahName} surah={surah} index={i} selectedTab={selectedTab} />
                             ))
                         }
                     </div>

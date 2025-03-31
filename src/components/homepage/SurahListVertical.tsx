@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useQuery } from '@tanstack/react-query'
 import { getAllSurahListAction } from '@/actions/HomepageActions'
 import { useParams } from 'next/navigation'
+import { X } from 'lucide-react'
+import SurahListVerticalSkeleton from '../skeletons/SurahListVerticalSkeleton'
 
 type surahType = {
     surahName: string;
@@ -23,11 +25,15 @@ const SurahListVertical = () => {
     })
 
     return (
-        <div className='flex absolute '>
+        <div className='flex absolute'>
             {
                 isLoading && (
-                    // todo: add skeleton
-                    <p>Loading...</p>
+                    <SurahListVerticalSkeleton />
+                )
+            }
+            {
+                !isLoading && !surahLists && (
+                    <p className='flex items-center my-5'><X className='text-red-500' /> No surah found</p>
                 )
             }
             {

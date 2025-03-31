@@ -1,11 +1,12 @@
 "use client"
 
 import Baselayout from '@/components/base/BaseLayout';
-import { Info } from 'lucide-react';
+import { Info, X } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { Separator } from '@/components/ui/separator';
 import ShowAyah from './ShowAyah';
+import SurahSkeleton from '@/components/skeletons/SurahSkeleton';
 
 type surahAudio = {
     reciter: string;
@@ -49,8 +50,12 @@ const page = () => {
             <div className='flex justify-center'>
                 {
                     isLoading && (
-                        // todo: skeleton
-                        <p>Loading...</p>
+                        <SurahSkeleton />
+                    )
+                }
+                {
+                    !isLoading && !surah && (
+                        <p className='flex items-center my-5'><X className='text-red-500' /> Surah not found</p>
                     )
                 }
                 {
